@@ -23,8 +23,24 @@ You start them separately. Put `OAUTH_TOKEN` into `.env` yourself.
 ## Quick start
 
 ```bash
-cp .env.example .env
-# fill CLIENT_ID, BOT_USER_ID, CHAT_CHANNEL_USER_ID
+
+# 1) Build the Oauth Server:
+docker compose -f docker-compose.oauth.yml up --build
+
+# 2) Login with the BOT account (not the developer/streamer account)
+# 3) Copy the oauth credential into the .env file
+
+# 4) create credentials:
+`cp .env.example .env`
+
+# 5) ./get-user-id.sh streamer_name CHAT_CHANNEL_USER_ID
+# 6) ./get-user-id.sh bot_name for BOT_USER_ID
+# 7) CLIENT_ID is retrieved from the dev.twitch.tv portal for the created application
+# 8) Start the Bot application:
+`docker compose -f docker-compose.bot.yml up --build`
+# 9) Open the chat for the streamer account and post `HeyGuys`. The bot will respond in the chat `VoHiYo`.
+
+
 ```
 
 ### 1. Start OAuth server
@@ -82,4 +98,6 @@ npm start       # bot.js
 - Do not commit `.env`.
 
 ## Test Chat:
-https://www.twitch.tv/afterlife_test
+https://www.twitch.tv/afterlife_systems
+
+
