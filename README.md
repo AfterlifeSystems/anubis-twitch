@@ -1,9 +1,11 @@
 # anubis-twitch
 
+Very Basic Proof-of-Concept Integration
+
 Twitch chat bot integration for the Neural Nexus API, based on the
 [Twitch Example Chatbot](https://dev.twitch.tv/docs/chat/chatbot-guide/#example-code).
 
-By default the bot listens for `HeyGuys` and replies with `VoHiYo`.
+The bot listens for `HeyGuys` and replies with `VoHiYo`.
 
 ## Two Compose files
 
