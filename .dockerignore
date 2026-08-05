@@ -9,3 +9,9 @@ npm-debug.log
 !.env.example
 Dockerfile
 docker-compose.yml
+
+# Credentials and browser state must never enter the image layers.
+.twitch-tokens
+.twitch-tokens.json
+.browser-profile*
+__pycache__

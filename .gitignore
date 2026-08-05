@@ -1,7 +1,16 @@
 .env
 .env.*
 !.env.example
+
+# Twitch access token / refresh token store — never commit
+.twitch-tokens/
+.twitch-tokens.json
+
+# Browser profiles must never be committed: they carry session cookies and
+# durable device identifiers. Match every variant, not just one exact name.
 .browser-profile/
+.browser-profile*/
+
 .cursor/
 node_modules/
 # Byte-compiled / optimized / DLL files

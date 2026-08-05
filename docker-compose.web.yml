@@ -1,17 +1,20 @@
 services:
-  bot:
+  web:
     build: .
-    container_name: anubis-twitch-bot
-    command: ["node", "bot.js"]
+    container_name: anubis-twitch-web
+    command: ["node", "web-server.js"]
+    ports:
+      - "9070:9070"
     env_file:
       - .env
     environment:
+      OAUTH_PORT: "9070"
+      OAUTH_REDIRECT_URI: http://localhost:9070
       ENV_PATH: /app/.env
       TOKEN_STORE_PATH: /app/.twitch-tokens/tokens.json
       CHANNEL_STORE_PATH: /app/.twitch-tokens/channels.json
     volumes:
       - ./.env:/app/.env:ro
-      # Read/write: the bot rotates the refresh token in place as it renews,
-      # and reads the channel list the web server maintains.
+      # Broadcasters joining and leaving are written here; the bot reads it.
       - ./.twitch-tokens:/app/.twitch-tokens
     restart: unless-stopped
